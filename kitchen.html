@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mumma's Kitchen — Your Recipe Hub</title>
+
+<style>
+    body{
+        font-family:Arial,sans-serif;
+        line-height:1.6;
+        margin:0;
+        padding:0;
+        background:#f5f5f5;
+        color:#444;
+    }
+
+    .container{
+        max-width:1100px;
+        margin:auto;
+        padding:0 20px;
+    }
+
+    /* HEADER */
+    header{
+        background:#fff;
+        padding:20px 0;
+        box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    }
+    header h1{
+        text-align:center;
+        color:#8e44ad;
+        margin:0;
+        font-size:2.5rem;
+    }
+    header p{
+        text-align:center;
+        margin:10px 0 20px;
+        font-style:italic;
+        color:#666;
+    }
+
+    /* NAVBAR */
+    nav{
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        margin-bottom:20px;
+    }
+    nav span{
+        margin:0 10px;
+    }
+    nav a{
+        text-decoration:none;
+        color:#444;
+        font-weight:bold;
+        padding:5px 10px;
+        border-radius:4px;
+        transition:.3s;
+    }
+    nav a:hover{
+        background:#f1f1f1;
+        color:#8e44ad;
+    }
+
+    /* SEARCH */
+    #search{
+        text-align:center;
+        margin:20px 0;
+    }
+    #search input{
+        width:70%;
+        padding:10px;
+        border:1px solid #ddd;
+        border-radius:4px;
+        font-size:16px;
+    }
+    #search button{
+        padding:10px 20px;
+        background:#8e44ad;
+        color:#fff;
+        border:none;
+        border-radius:4px;
+        cursor:pointer;
+        font-size:16px;
+        transition:.3s;
+    }
+    #search button:hover{
+        background:#7d3c98;
+    }
+
+    /* SECTIONS */
+    section{
+        padding:40px 0;
+    }
+    h2{
+        color:#8e44ad;
+        text-align:center;
+        margin-bottom:20px;
+    }
+    hr{
+        border:none;
+        height:1px;
+        background:#ddd;
+        margin:20px 0;
+    }
+
+    /* FEATURED RECIPE */
+    #home article{
+        background:#fff;
+        padding:20px;
+        border-radius:8px;
+        box-shadow:0 2px 10px rgba(0,0,0,0.1);
+        margin-bottom:20px;
+    }
+    #home img{
+        width:100%;
+        max-width:650px;
+        display:block;
+        margin:auto;
+        border-radius:8px;
+    }
+
+    /* CATEGORIES */
+    #categories ul{
+        list-style:none;
+        padding:0;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+    #categories li{
+        width:250px;
+        margin:10px;
+        text-align:center;
+    }
+    #categories img{
+        width:100%;
+        height:200px;
+        object-fit:cover;
+        border-radius:8px;
+        box-shadow:0 2px 5px rgba(0,0,0,0.1);
+        transition:.3s;
+    }
+    #categories img:hover{
+        transform:scale(1.05);
+    }
+    #categories a{
+        display:block;
+        margin-top:10px;
+        text-decoration:none;
+        color:#444;
+        font-weight:bold;
+    }
+    #categories a:hover{
+        color:#8e44ad;
+    }
+
+    /* POPULAR RECIPES */
+    #popular article{
+        background:#fff;
+        padding:18px;
+        border-radius:8px;
+        margin-bottom:15px;
+        box-shadow:0 2px 7px rgba(0,0,0,0.1);
+    }
+
+    /* SUBMIT RECIPE FORM */
+    #submit form{
+        max-width:800px;
+        margin:auto;
+        background:#fff;
+        padding:30px;
+        border-radius:8px;
+        box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    }
+    #submit label{
+        font-weight:bold;
+        display:block;
+        margin-bottom:5px;
+    }
+    #submit input,
+    #submit textarea{
+        width:100%;
+        padding:10px;
+        border:1px solid #ddd;
+        border-radius:4px;
+        margin-bottom:15px;
+    }
+    #submit button{
+        background:#8e44ad;
+        border:none;
+        color:#fff;
+        padding:10px 20px;
+        border-radius:4px;
+        font-size:16px;
+        cursor:pointer;
+        transition:.3s;
+    }
+    #submit button:hover{
+        background:#7d3c98;
+    }
+
+    /* FOOTER */
+    footer{
+        background:#333;
+        color:#fff;
+        text-align:center;
+        padding:40px 0;
+    }
+    footer a{
+        color:#eee;
+        text-decoration:none;
+    }
+    footer a:hover{
+        color:#8e44ad;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+        #search input{
+            width:100%;
+            margin-bottom:10px;
+        }
+        #categories li{
+            width:100%;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="container">
+        <h1>🍽 Mumma's Kitchen</h1>
+        <p>Discover, Cook, and Share the World's Best Recipes!</p>
+
+        <nav>
+            <span><a href="#home">Home</a></span>
+            <span><a href="#popular">Popular Recipes</a></span>
+            <span><a href="#categories">Categories</a></span>
+            <span><a href="#submit">Submit Recipe</a></span>
+            <span><a href="#contact">Contact</a></span>
+        </nav>
+
+        <section id="search">
+            <h2>🔍 Find Your Favorite Recipe</h2>
+            <input type="text" placeholder="Search for dishes, ingredients or chefs...">
+            <button>Search</button>
+        </section>
+    </div>
+</header>
+
+<hr>
+
+<!-- FEATURED RECIPE -->
+<section id="home">
+    <div class="container">
+        <h2>🌟 Featured Recipe of the Week</h2>
+
+        <article>
+            <h3><b><big>Classic Paneer Butter Masala</big></b></h3>
+
+            <img src="https://j6e2i8c9.delivery.rocketcdn.me/wp-content/uploads/2020/12/Paneer-butter-masala-recipe-3.jpg.webp">
+
+            <p><strong>Prep:</strong> 30 mins | <strong>Servings:</strong> 4</p>
+            <p>A rich and creamy North Indian curry with paneer, tomatoes, cream, and aromatic spices.</p>
+
+            <p><strong>Source:</strong> 
+                <a href="https://www.vegrecipesofindia.com" target="_blank">Veg Recipes of India</a>
+            </p>
+
+            <p><strong>Rate this Recipe:</strong></p>
+            <form>
+                <input type="radio" name="r">⭐ 
+                <input type="radio" name="r">⭐⭐ 
+                <input type="radio" name="r">⭐⭐⭐ 
+                <input type="radio" name="r">⭐⭐⭐⭐ 
+                <input type="radio" name="r">⭐⭐⭐⭐⭐
+            </form>
+
+        </article>
+    </div>
+</section>
+
+<hr>
+
+<!-- CATEGORIES -->
+<section id="categories">
+    <div class="container">
+        <h2>🍲 Browse by Categories</h2>
+
+        <ul>
+            <li>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIcmyeW_WQE_MkAPA52Xjzr2GNt1BOvKfHwg&s">
+                <a href="#">Indian Cuisine</a>
+            </li>
+
+            <li>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdrR8jiUDBFX1-441UYwPHTcTvf5gjnNUD7w&s">
+                <a href="#">Italian Dishes</a>
+            </li>
+
+            <li>
+                <img src="https://img.freepik.com/free-photo/top-view-fast-food-meal_23-2148273108.jpg">
+                <a href="#">Quick Snacks</a>
+            </li>
+
+            <li>
+                <img src="https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL2Rlc3NlcnRzLXVwZGF0ZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgyOH19fQ==">
+                <a href="#">Desserts</a>
+            </li>
+
+            <li>
+                <img src="https://domf5oio6qrcr.cloudfront.net/medialibrary/10039/vegan-food-bowl.jpg">
+                <a href="#">Healthy & Vegan</a>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<hr>
+
+<!-- POPULAR RECIPES -->
+<section id="popular">
+    <div class="container">
+        <h2>🔥 Famous Indian Recipes</h2>
+
+        <article><h3>1. Butter Chicken</h3><p>Creamy tomato curry with tender chicken.</p><p><b>Rating:</b> ⭐⭐⭐⭐⭐</p></article>
+        <article><h3>2. Hyderabadi Biryani</h3><p>Aromatic rice with saffron & spices.</p><p><b>Rating:</b> ⭐⭐⭐⭐⭐</p></article>
+        <article><h3>3. Masala Dosa</h3><p>Crispy fermented batter dosa.</p><p><b>Rating:</b> ⭐⭐⭐⭐☆</p></article>
+        <article><h3>4. Palak Paneer</h3><p>Paneer in spinach gravy.</p><p><b>Rating:</b> ⭐⭐⭐⭐☆</p></article>
+        <article><h3>5. Chole Bhature</h3><p>Spicy chickpeas with fluffy bhature.</p><p><b>Rating:</b> ⭐⭐⭐⭐☆</p></article>
+        <article><h3>6. Gulab Jamun</h3><p>Milk dumplings in sugar syrup.</p><p><b>Rating:</b> ⭐⭐⭐⭐⭐</p></article>
+    </div>
+</section>
+
+<hr>
+
+<!-- SUBMIT FORM -->
+<section id="submit">
+    <div class="container">
+        <h2>🧑‍🍳 Submit Your Own Recipe</h2>
+
+        <form>
+            <label>Your Name:</label>
+            <input type="text" required>
+
+            <label>Recipe Title:</label>
+            <input type="text" required>
+
+            <label>Ingredients:</label>
+            <textarea rows="4" required></textarea>
+
+            <label>Cooking Instructions:</label>
+            <textarea rows="5" required></textarea>
+
+            <label>Upload Image:</label>
+            <input type="file" accept="image/*">
+
+            <label>Source (Optional):</label>
+            <input type="text">
+
+            <button type="submit">Submit Recipe</button>
+        </form>
+    </div>
+</section>
+
+<hr>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+        <h2>👩‍🍳 About Mumma's Kitchen</h2>
+        <p>Mumma's Kitchen is a community-driven recipe platform where food lovers share and explore cuisines.</p>
+    </div>
+</section>
+
+<hr>
+
+<!-- FOOTER -->
+<footer id="contact">
+    <div class="container">
+        <h2>📧 Contact Us</h2>
+        <p>Email: 
+            <a href="mailto:supriyamaurya@example.com">
+                supriyamaurya@example.com
+            </a>
+        </p>
+
+        <p>
+            Follow: 
+            <a href="https://www.instagram.com/supriya_maurya" target="_blank">Instagram</a> | 
+            <a href="#">YouTube</a> | 
+            <a href="#">Pinterest</a>
+        </p>
+
+        <p>&copy; 2025 Mumma's Kitchen — All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
